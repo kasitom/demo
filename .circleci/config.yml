@@ -10,7 +10,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:hR5VSxbpQUjrD8hK1Mvfhl1jg8E0ywm7ICkqp6zgHu"
-       - checkout
+      - checkout
       - restore_cache:
           keys:
             - dependencies_circle_demo
