@@ -10,12 +10,23 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:hR5VSxbpQUjrD8hK1Mvfhl1jg8E0ywm7ICkqp6zgHu"
-      - checkout
-      - run: echo "A first hello"
-      - run: npm -v
+       - checkout
+      - restore_cache:
+          keys:
+            - dependencies_circle_demo
       - run:
           name: Install
           command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies_circle_demo
       - run:
           name: Build
           command: yarn build
+      - run:
+          name: Prepare shell commands
+          command: chmod +x deploy.sh
+      - run:
+          name: Run Deploy to Github pages
+          command: ./deploy.sh
