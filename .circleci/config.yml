@@ -13,6 +13,7 @@ jobs:
       - checkout
       - run: echo "A first hello"
       - run: npm -v
+      -run: cd vuepro_1
       - run:
           name: Install
           command: yarn install
